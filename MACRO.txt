@@ -1,0 +1,48 @@
+Sub RemoveHyperLink()
+'
+' RemoveHyperLink Macro
+'
+'
+'    Range("B2:Z2").Select
+'    Selection.Hyperlinks.Delete
+
+' Remove killing spree
+' Dim i As Integer
+ 
+ For i = 2 To 26
+    If InStr(Cells(5, i).Value, "Kill") Then
+ '       'MsgBox (Cells(5, i))
+        Cells(5, i).Select
+        Selection.Delete Shift:=xlUp
+    End If
+    
+    Dim score As String
+    Dim score_array() As String
+        
+    score = Cells(3, i)
+    score_array = Split(score, "/")
+    
+    'Largo del arreglo debe ser 3 para que entre aqui
+    If (UBound(score_array, 1) > 1) Then
+        Cells(11, i).Value = Replace(score_array(0), " ", "")
+        Cells(12, i).Value = Replace(score_array(1), " ", "")
+        Cells(13, i).Value = Replace(score_array(2), " ", "")
+    End If
+        
+        
+    
+ Next i
+
+ Dim text As String
+ Dim a As Integer
+ Dim name As Variant
+ 
+ text = ActiveCell.Value
+ name = Split(text, " / ")
+ 
+ For a = 1 To LBound(name)
+    Cells(11, a + 1).Value = name(a)
+ Next a
+
+
+End Sub
