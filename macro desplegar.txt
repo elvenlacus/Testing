@@ -1,0 +1,35 @@
+Option Explicit
+Private Sub Worksheet_SelectionChange(ByVal Target As Range)
+    If Selection.Count = 1 Then
+        If Not Intersect(Target, Range("B2")) Is Nothing Then
+            Call Sup001
+        End If
+        If Not Intersect(Target, Range("B16")) Is Nothing Then
+            Call Sup002
+        End If
+        If Not Intersect(Target, Range("B24")) Is Nothing Then
+            Call Sup003
+        End If
+    End If
+End Sub
+Sub Sup001()
+    With Rows("3:15")
+        .Select
+        .EntireRow.Hidden = Not .EntireRow.Hidden
+        Cells(1, 3).Select
+    End With
+End Sub
+Sub Sup002()
+    With Rows("17:23")
+        .Select
+        .EntireRow.Hidden = Not .EntireRow.Hidden
+        Cells(1, 3).Select
+    End With
+End Sub
+Sub Sup003()
+    With Rows("25:31")
+        .Select
+        .EntireRow.Hidden = Not .EntireRow.Hidden
+        Cells(1, 3).Select
+    End With
+End Sub
